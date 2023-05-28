@@ -9,6 +9,7 @@ import fontsizes from '../../assets/fontsizes/fontsizes';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    bottom: hp(0.5),
     // backgroundColor: colors.backGround,
   },
 });

@@ -1,4 +1,6 @@
 const colors = {
+  darkTheme:'#0F1828',
+  lightTheme:'rgba(255, 255, 255, 1)',
   white: 'rgba(255, 255, 255, 1)',
   black: 'rgba(0, 0, 0, 1)',
   yellow: 'rgba(190, 204, 3, 1)',
