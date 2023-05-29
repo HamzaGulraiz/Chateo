@@ -11,7 +11,7 @@ import icons from '../../assets/icons/icons';
 import CustomSearchBar from '../../components/SearchBar/SearchBar';
 import CustomchatFlatList from '../../components/FlatList/ChatFlatList/ChatFlatList';
 import images from '../../assets/images/images';
-import CustomBottomTabNavigator from '../../routes/BottomTabNavigator/Navigators';
+
 
 const Contacts = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -102,19 +102,21 @@ const Contacts = () => {
     }}
     secondRightIcon={0}
     onPressSecondRightIcon={()=>{}}
+    marginTop={hp(1)}
+    marginBottom={hp(4)}
     />
     <CustomSearchBar
         placeHolder='Search'
         height={hp(4.4)}
         width={0}
-        marginTop={hp(4)}
-        marginBottom={hp(4)}
+        marginTop={0}
+        marginBottom={hp(1)}
         value={searchValue}
         setValue={setSearchValue}
         />
     <CustomchatFlatList data={contactData} divider={true} />
     </View>
-    <CustomBottomTabNavigator routName='Contacts' />
+    
         </>
     </CustomBackground>
   );

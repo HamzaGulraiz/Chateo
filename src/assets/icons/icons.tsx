@@ -4,6 +4,7 @@ const icons  = {
   add: require('./add.png'),
   archive: require('./archive.png'),
   back: require('./back.png'),
+  forward: require("./forward.png"),
   menu: require('./menu.png'),
   newChat: require('./newChat.png'),
   search: require('./search.png'),
@@ -13,6 +14,16 @@ const icons  = {
   chatInactive: require("./chatInactive.png"),
   moreActive: require("./moreActive.png"),
   moreInactive: require("./moreInactive.png"),
+  dotActive: require("./dotActive.png"),
+  addStory: require("./addStory.png"),
+  defaultAccountImage: require("./defaultAccountImage.png"),
+  account: require("./account.png"),
+  appereance: require("./appereance.png"),
+  notifications: require("./notifications.png"),
+  privacy: require("./privacy.png"),
+  dataUsage: require("./dataUsage.png"),
+  help: require("./help.png"),
+  invite: require("./invite.png"),
 }; 
 
 export default icons;

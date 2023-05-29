@@ -17,6 +17,8 @@ type CustomHeaderProps = {
   onPressRightIcon():void,
   secondRightIcon: ImageSourcePropType,
   onPressSecondRightIcon():void,
+  marginTop:number,
+  marginBottom:number,
 }
 
 const CustomHeader :React.FC<CustomHeaderProps> = ({
@@ -27,9 +29,14 @@ const CustomHeader :React.FC<CustomHeaderProps> = ({
   onPressRightIcon,
   secondRightIcon,
   onPressSecondRightIcon,
+  marginTop,
+  marginBottom,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container,
+      marginTop:marginTop?marginTop:0,
+      marginBottom:marginBottom?marginBottom:0,
+    }}>
       {leftIcon ? (
         <TouchableOpacity style={styles.leftImgView} onPress={onPressLeftIcon}>
           <Image style={styles.image} source={leftIcon} resizeMode="contain" />
@@ -59,7 +66,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       marginHorizontal: wp(6.4),
       alignItems: "center",
-      marginTop:hp(1),
+      // marginTop:hp(1),
       // height:hp(3.5),
       // backgroundColor:"red",
     },

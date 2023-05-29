@@ -15,6 +15,8 @@ type ContactDataItem = {
   status: string;
   picture: ImageSourcePropType;
   story :string;
+  date: string;
+  notification:string;
 };
 
 type CustomchatFlatListProps = {
@@ -53,6 +55,21 @@ const CustomchatFlatList : React.FC<CustomchatFlatListProps> = ({ data,divider }
         <Text style={styles.profileName}>{item.name}</Text> 
         <Text style={styles.status}>{item.status}</Text>
       </View>
+
+      <View style={styles.notificationView}>
+        {item.date ? ( 
+          <View style={styles.date}>
+              <Text style={styles.dateText}>{item.date}</Text>
+          </View>
+        ) : null}
+
+        {item.notification ? (
+          <View style={styles.notification}>
+              <Text style={styles.notificationText}>{item.notification}</Text>
+          </View>
+        ) : null}
+
+        </View>
       </View>
       {divider ? (
       <Divider 
@@ -123,7 +140,7 @@ const styles = StyleSheet.create({
     borderRadius:wp(4.2)
   },
   info: {
-    marginLeft:wp(2),
+    marginLeft:wp(4),
     marginTop:hp(0.5),
     // justifyContent:"center",
   },
@@ -141,5 +158,39 @@ const styles = StyleSheet.create({
     fontWeight:"400",
     fontSize:fontsizes.px_12,
     fontFamily:fonts.Light,
+  },
+  notificationView:{
+    position:"absolute",
+    right:0,
+
+  },
+  date: {
+    marginBottom:hp(1)
+},
+dateText: {
+   color:colors.black,
+    // marginRight: wp(2),
+    fontWeight:"400",
+    fontSize:fontsizes.px_10,
+    fontFamily:fonts.Light,
+},
+notification: {
+    backgroundColor:"#D2D5F9",
+    height:hp(3),
+    width:wp(6),
+    borderRadius:wp(5),
+    alignItems:"center",
+    justifyContent:"center",
+    position:"absolute",
+    right:0,
+    marginTop:hp(3),
+
+  },
+  notificationText:{
+     color:colors.black,
+    // marginRight: wp(2),
+    fontWeight:"600",
+    fontSize:fontsizes.px_10,
+    fontFamily:fonts.Bold,
   },
 })

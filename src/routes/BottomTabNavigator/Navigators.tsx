@@ -8,125 +8,98 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Contacts from '../../screens/Contacts';
 import Chats from '../../screens/Chats';
 import More from '../../screens/More';
-import { CONTACTS, CHATS, MORE } from '../../constants/Navigator';
+import { CONTACTS, CHATS, MORE, MY_TABS } from '../../constants/Navigator';
 import icons from '../../assets/icons/icons';
 import colors from '../../assets/colors/colors';
 import fontsizes from '../../assets/fontsizes/fontsizes';
 import fonts from '../../assets/fonts/fonts';
-// import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../StackNavigator/Navigators';
-// import { RootStackParamList } from '../types';
-
-// type HomeScreenProps = {
-//     navigation: StackNavigationProp<RootStackParamList, 'Home'>;
-//   };
 
 
-type CustomBottomTabNavigatorProps = {
-    routName: string;
-}
 
 
-  const CustomBottomTabNavigator : React.FC<CustomBottomTabNavigatorProps> = ({
-    routName,
-  }) => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
-  const [activeTab, setActiveTab] = useState(routName);
+const Tab = createBottomTabNavigator();
 
-  const handleTabPress = (tabName: string) => {
-    setActiveTab(tabName);
-    // console.log(JSON.stringify(tabName));
+function MyTabs() {
+  return (
+    <Tab.Navigator 
+    screenOptions={{
+      headerShown: false,
+     tabBarShowLabel: false,
+    }}
     
-};
-
-return (
-    <View style={styles.container}>
-      
-      <View style={styles.tabBar}>
-        <TouchableOpacity onPress={() => {
-            handleTabPress(CONTACTS)
-            navigation.navigate("Contacts");
-        }} style={styles.tabButton}>
-            {activeTab === CONTACTS ? (
-                <Text style={styles.tabText}>Contacts</Text>
-                ) : (
-                    <Image
-                    source={icons.contactInactive}
-                    style={styles.tabIcon}
-                    resizeMode="contain"
-                    />
-                    )}
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {
-            handleTabPress(CHATS)
-            navigation.navigate("Chats");
-        }} style={styles.tabButton}>
-        {activeTab === CHATS ? (
+    
+    >
+      <Tab.Screen
+        name={CONTACTS} 
+        component={Contacts}
+        options={{
+          tabBarIcon : ({focused})=>(
+            focused ?
+            <> 
+            <Text style={styles.tabText}>Contacts</Text>
+            <Image source={icons.dotActive} resizeMode="contain" style={styles.dot} />
+            </>
+            : 
+            <Image source={icons.contactInactive} resizeMode="contain" style={styles.tabIcon} /> 
+          )
+        }}
+        />
+           <Tab.Screen
+        name={CHATS} 
+        component={Chats}
+        options={{
+          tabBarIcon : ({focused})=>(
+            focused ?
+            <> 
             <Text style={styles.tabText}>Chats</Text>
-            ) : (
-                <Image
-                source={icons.chatInactive}
-                style={styles.tabIcon}
-                resizeMode="contain"
-                />
-                )}
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {
-            handleTabPress(MORE)
-            navigation.navigate("More");
-            }} style={styles.tabButton}>
-        {activeTab === MORE ? (
-                    <Text style={styles.tabText}>More</Text>
-            ) : (
-          <Image
-            source={icons.moreInactive}
-            style={styles.tabIcon}
-            resizeMode="contain"
-          />
-            )}
-        </TouchableOpacity>
-      </View>
-    </View>
+            <Image source={icons.dotActive} resizeMode="contain" style={styles.dot} />
+            </>
+            : 
+            <Image source={icons.chatInactive} resizeMode="contain" style={styles.tabIcon} />
+          )
+        }}
+        />
+              <Tab.Screen
+        name={MORE} 
+        component={More}
+        options={{
+          tabBarIcon : ({focused})=>(
+            focused ?
+            <> 
+            <Text style={styles.tabText}>More</Text>
+            <Image source={icons.dotActive} resizeMode="contain" style={styles.dot} />
+            </>
+            : 
+            <Image source={icons.moreInactive} resizeMode="contain" style={styles.tabIcon} />
+          )
+        }}
+        />
+    </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+export default MyTabs
 
-    borderTopColor: "black",
-    borderTopWidth: 0.5,
-    height: hp(8),
-  },
-  tabBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: 50,
-    backgroundColor: 'white',
-  },
-  tabButton: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+const styles = StyleSheet.create({
   tabText: {
     color:colors.black,
+    marginBottom:hp(0.8),
     fontWeight:"600",
     fontSize:fontsizes.px_14,
     fontFamily:fonts.Bold,
   },
   tabIcon: {
-    width: 24,
-    height: 24,
+    width:wp(6),
+    height:hp(3.5),
+  },
+  dot: {
+    width: wp(1.2),
+    height: hp(0.8),
   },
 });
 
-export default CustomBottomTabNavigator;
 
 
-
-// {activeTab === CONTACTS && <Contacts />}
-//       {activeTab === CHATS && <Chats />}
-//       {activeTab === MORE && <More />}
