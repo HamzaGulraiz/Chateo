@@ -12,7 +12,7 @@ import Divider from '../../components/Divider/Divider';
 import colors from '../../assets/colors/colors';
 import { useNavigation } from '@react-navigation/native';
 import { APPEREANCE } from '../../constants/Navigator';
-
+import { useTypedSelector } from '../../redux/Store';
 
 interface SettingItem {
   id: number;
@@ -21,12 +21,15 @@ interface SettingItem {
   onPress: () => void;
 }
 
-
+type NavigationProps = {
+  navigate(APPEREANCE: string): unknown;
+  navigation: string;
+}
 
 const More = () => {
 
-  const navigation = useNavigation();
-
+  const navigation = useNavigation<NavigationProps>();
+  const THEME = useTypedSelector((state) => state.app.theme);
 
   let settingData: SettingItem[] = [
     { 
@@ -51,7 +54,7 @@ const More = () => {
     icon: icons.appereance,
     onPress: () => {
       // console.log("Appereance");
-      // navigation.navigate(APPEREANCE);
+      navigation.navigate(APPEREANCE);
     },
   },
   { 
@@ -120,24 +123,38 @@ const More = () => {
 
       <TouchableOpacity style={styles.userInformation}>
           <View style={styles.userImg}>
-          <Image source={icons.defaultAccountImage} style={styles.image} resizeMode="contain" />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={icons.defaultAccountImage}  resizeMode="contain" />
           </View>
           <View style={styles.userNameView}>
-            <Text style={styles.userName}>Almayra Zamzamy</Text>
-            <Text style={styles.userNumber}>+62 1309 - 1710 - 1920</Text>
+            <Text style={{...styles.userName,
+           color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>Almayra Zamzamy</Text>
+            <Text style={{...styles.userNumber,
+            color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>+62 1309 - 1710 - 1920</Text>
           </View>
           <View style={styles.forwardIcon}>
-          <Image source={icons.forward} style={styles.image} resizeMode="contain" />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={icons.forward}  resizeMode="contain" />
           </View>
       </TouchableOpacity>
       {settingData.map((item)=>(
         <TouchableOpacity key={item.id} onPress={item.onPress} style={styles.settingCard}>
             <View style={styles.settingIcon}>
-            <Image source={item.icon} style={styles.image} resizeMode="contain" />
+            <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={item.icon}  resizeMode="contain" />
             </View>
-            <Text style={styles.settingTitle}>{item.title}</Text>
+            <Text style={{...styles.settingTitle,
+            color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>{item.title}</Text>
             <View style={styles.forwardIcon}>
-          <Image source={icons.forward} style={styles.image} resizeMode="contain" />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={icons.forward}  resizeMode="contain" />
           </View>
         </TouchableOpacity>
       ))}
@@ -149,16 +166,22 @@ const More = () => {
        height={hp(0.2)}
        width={wp(85)}
        alignSelf='center'
-       dividerColor={colors.grey}
+       dividerColor={THEME === "Dark" ? colors.lightGrey : colors.grey}
       />
        {settingDataAfterDivider.map((item)=>(
         <TouchableOpacity key={item.id} onPress={item.onPress} style={styles.settingCard}>
             <View style={styles.settingIcon}>
-            <Image source={item.icon} style={styles.image} resizeMode="contain" />
+            <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={item.icon}  resizeMode="contain" />
             </View>
-            <Text style={styles.settingTitle}>{item.title}</Text>
+            <Text style={{...styles.settingTitle,
+             color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>{item.title}</Text>
             <View style={styles.forwardIcon}>
-          <Image source={icons.forward} style={styles.image} resizeMode="contain" />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={icons.forward}  resizeMode="contain" />
           </View>
         </TouchableOpacity>
       ))}

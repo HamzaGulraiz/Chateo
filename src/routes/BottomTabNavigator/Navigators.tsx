@@ -13,24 +13,21 @@ import icons from '../../assets/icons/icons';
 import colors from '../../assets/colors/colors';
 import fontsizes from '../../assets/fontsizes/fontsizes';
 import fonts from '../../assets/fonts/fonts';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackParams } from '../StackNavigator/Navigators';
-
-
-
+import { useTypedSelector } from '../../redux/Store';
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
+  const THEME = useTypedSelector((state) => state.app.theme);
   return (
     <Tab.Navigator 
     screenOptions={{
       headerShown: false,
      tabBarShowLabel: false,
+     tabBarStyle: {
+      backgroundColor: THEME === "Light" ? colors.lightTheme : colors.darkTheme,
+     }
     }}
-    
-    
     >
       <Tab.Screen
         name={CONTACTS} 
@@ -39,11 +36,17 @@ function MyTabs() {
           tabBarIcon : ({focused})=>(
             focused ?
             <> 
-            <Text style={styles.tabText}>Contacts</Text>
-            <Image source={icons.dotActive} resizeMode="contain" style={styles.dot} />
+            <Text style={{...styles.tabText,
+            color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>Contacts</Text>
+            <Image source={icons.dotActive} resizeMode="contain" style={{...styles.dot,
+            tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+            }} />
             </>
             : 
-            <Image source={icons.contactInactive} resizeMode="contain" style={styles.tabIcon} /> 
+            <Image source={icons.contactInactive} resizeMode="contain" style={{...styles.tabIcon,
+                tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+            }} /> 
           )
         }}
         />
@@ -54,11 +57,17 @@ function MyTabs() {
           tabBarIcon : ({focused})=>(
             focused ?
             <> 
-            <Text style={styles.tabText}>Chats</Text>
-            <Image source={icons.dotActive} resizeMode="contain" style={styles.dot} />
+            <Text style={{...styles.tabText,
+            color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>Chats</Text>
+            <Image source={icons.dotActive} resizeMode="contain"style={{...styles.dot,
+            tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+            }} />
             </>
             : 
-            <Image source={icons.chatInactive} resizeMode="contain" style={styles.tabIcon} />
+            <Image source={icons.chatInactive} resizeMode="contain" style={{...styles.tabIcon,
+              tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+          }} />
           )
         }}
         />
@@ -69,11 +78,17 @@ function MyTabs() {
           tabBarIcon : ({focused})=>(
             focused ?
             <> 
-            <Text style={styles.tabText}>More</Text>
-            <Image source={icons.dotActive} resizeMode="contain" style={styles.dot} />
+            <Text style={{...styles.tabText,
+            color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+            }}>More</Text>
+            <Image source={icons.dotActive} resizeMode="contain" style={{...styles.dot,
+            tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+            }} />
             </>
             : 
-            <Image source={icons.moreInactive} resizeMode="contain" style={styles.tabIcon} />
+            <Image source={icons.moreInactive} resizeMode="contain" style={{...styles.tabIcon,
+              tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+          }} />
           )
         }}
         />

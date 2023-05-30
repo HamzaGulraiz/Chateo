@@ -9,6 +9,7 @@ import {
   import fonts from '../../../assets/fonts/fonts';
   import Divider from '../../Divider/Divider';
 import icons from '../../../assets/icons/icons';
+import { useTypedSelector } from '../../../redux/Store';
   
   type ContactDataItem = {
     id: number;
@@ -24,6 +25,7 @@ import icons from '../../../assets/icons/icons';
   
   
   const CustomStoryFlatList : React.FC<CustomStoryFlatListProps> = ({ data }) => {
+    const THEME = useTypedSelector((state) => state.app.theme);
     return (
         <View style={styles.container}>
         <ScrollView horizontal >
@@ -36,7 +38,9 @@ import icons from '../../../assets/icons/icons';
        <Image source={icons.addStory} resizeMode="cover" style={styles.image} />
         </View>
         <View style={styles.info}>
-          <Text numberOfLines={1} style={styles.profileName}>Your Story</Text> 
+          <Text numberOfLines={1} style={{...styles.profileName,
+          color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+          }}>Your Story</Text> 
         </View>
         </View>
 
@@ -60,7 +64,9 @@ import icons from '../../../assets/icons/icons';
             }
         </View>
         <View style={styles.info}>
-          <Text numberOfLines={1} style={styles.profileName}>{item.name}</Text> 
+          <Text numberOfLines={1} style={{...styles.profileName,
+          color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+          }}>{item.name}</Text> 
         </View>
         </View>
         </View>
@@ -103,7 +109,7 @@ import icons from '../../../assets/icons/icons';
         marginBottom: hp(0.6),
     },
     profileName: {
-      color:colors.black,
+      // color:colors.black,
       textAlign:"center",
       fontWeight:"600",
       fontSize:fontsizes.px_10,

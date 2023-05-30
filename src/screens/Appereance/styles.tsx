@@ -14,21 +14,23 @@ const styles = StyleSheet.create({
     // backgroundColor: colors.backGround,
   },
   title: {
-     color:colors.black,
+    //  color:colors.black,
     textAlign:"center",
     fontWeight:"600",
     fontSize:fontsizes.px_18,
     fontFamily:fonts.Bold,
   },
   imageContainer: {
+    // backgroundColor:colors.red,
     marginTop:hp(4),
      marginHorizontal: wp(6.4),
-     justifyContent:"space-around",
+     justifyContent:"space-between",
+     alignItems:"center",
      flexDirection:"row",
   },
   logo:{
-    height:50,
-    width:50,
+    height:hp(6),
+    width:wp(12),
   },
   image: {
     width:"100%",

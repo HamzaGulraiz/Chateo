@@ -1,6 +1,10 @@
 const colors = {
   darkTheme:'#0F1828',
+  darkThemeTextH1:"#0F1828",
+  darkThemeTextH2:"#ADB5BD",
   lightTheme:'rgba(255, 255, 255, 1)',
+  lightThemeTextH1:"#F7F7FC",
+  lightThemeTextH2:"#ADB5BD",
   white: 'rgba(255, 255, 255, 1)',
   black: 'rgba(0, 0, 0, 1)',
   yellow: 'rgba(190, 204, 3, 1)',

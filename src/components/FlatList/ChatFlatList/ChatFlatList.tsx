@@ -8,6 +8,7 @@ import colors from '../../../assets/colors/colors';
 import fontsizes from '../../../assets/fontsizes/fontsizes';
 import fonts from '../../../assets/fonts/fonts';
 import Divider from '../../Divider/Divider';
+import { useTypedSelector } from '../../../redux/Store';
 
 type ContactDataItem = {
   id: number;
@@ -26,6 +27,7 @@ type CustomchatFlatListProps = {
 
 
 const CustomchatFlatList : React.FC<CustomchatFlatListProps> = ({ data,divider }) => {
+  const THEME = useTypedSelector((state) => state.app.theme);
   return (
     <ScrollView style={styles.container}>
        {data.map((item) => (
@@ -52,14 +54,20 @@ const CustomchatFlatList : React.FC<CustomchatFlatListProps> = ({ data,divider }
           }
       </View>
       <View style={styles.info}>
-        <Text style={styles.profileName}>{item.name}</Text> 
-        <Text style={styles.status}>{item.status}</Text>
+        <Text style={{...styles.profileName,
+        color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+        }}>{item.name}</Text> 
+        <Text style={{...styles.status,
+        color: THEME === "Dark" ? colors.lightThemeTextH2 : colors.darkThemeTextH2,
+        }}>{item.status}</Text>
       </View>
 
       <View style={styles.notificationView}>
         {item.date ? ( 
           <View style={styles.date}>
-              <Text style={styles.dateText}>{item.date}</Text>
+              <Text style={{...styles.dateText,
+               color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+              }}>{item.date}</Text>
           </View>
         ) : null}
 
@@ -80,7 +88,7 @@ const CustomchatFlatList : React.FC<CustomchatFlatListProps> = ({ data,divider }
        height={hp(0.2)}
        width={wp(85)}
        alignSelf='center'
-       dividerColor={colors.grey}
+       dividerColor={THEME === "Dark" ? colors.lightGrey : colors.grey}
       />
       ) : (
         <Divider 
@@ -146,14 +154,14 @@ const styles = StyleSheet.create({
   },
   profileName: {
     marginBottom: hp(0.6),
-    color:colors.black,
+    // color:colors.black,
     // marginRight: wp(2),
     fontWeight:"600",
     fontSize:fontsizes.px_14,
     fontFamily:fonts.Black,
   },
   status: {
-    color:colors.black,
+    // color:colors.black,
     // marginRight: wp(2),
     fontWeight:"400",
     fontSize:fontsizes.px_12,
@@ -168,7 +176,7 @@ const styles = StyleSheet.create({
     marginBottom:hp(1)
 },
 dateText: {
-   color:colors.black,
+  //  color:colors.black,
     // marginRight: wp(2),
     fontWeight:"400",
     fontSize:fontsizes.px_10,
@@ -187,7 +195,7 @@ notification: {
 
   },
   notificationText:{
-     color:colors.black,
+    //  color:colors.black,
     // marginRight: wp(2),
     fontWeight:"600",
     fontSize:fontsizes.px_10,

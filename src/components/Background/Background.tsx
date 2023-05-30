@@ -1,25 +1,45 @@
 import { StyleSheet, Text, View,StatusBar } from 'react-native'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import colors from '../../assets/colors/colors'
-
+import { getData } from '../../asyncStorage/AsyncStorage'
+// import {useSelector} from 'react-redux';
+import { useTypedSelector } from '../../redux/Store';
 
  type CustomBackgroundProps =  {
     children: JSX.Element
 }
-   
+    
 const STYLES = ['default', 'light-content', 'dark-content'] as const;
 
 const CustomBackground :React.FC<CustomBackgroundProps> = ({
   children,
 }) => {
-    const [theme, setTheme] = useState(false)
+  const THEME = useTypedSelector((state) => state.app.theme);
+  const [data, setData] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const value = await getData({ storageKey: 'theme' });
+
+      if (typeof value === 'string') {
+        setData(value);
+        // console.log(value);
+        
+      } else {
+        // Handle the case when value is void or undefined
+        console.log('Error occurred or value is undefined');
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <View style={{...styles.container,
-    backgroundColor:theme ? colors.darkTheme : colors.lightTheme,    
+    backgroundColor:THEME ==='Dark' ? colors.darkTheme : colors.lightTheme,    
     }}>
          <StatusBar
-        backgroundColor={theme ? colors.darkTheme : colors.lightTheme}
-        barStyle={theme? STYLES[1] : STYLES[2]}
+        backgroundColor={THEME ==='Dark' ? colors.darkTheme : colors.lightTheme}
+        barStyle={THEME ==='Dark'? STYLES[1] : STYLES[2]}
       />
         {children}
     </View>

@@ -7,6 +7,7 @@ import React from 'react'
 import fontsizes from '../../assets/fontsizes/fontsizes';
 import fonts from '../../assets/fonts/fonts';
 import colors from '../../assets/colors/colors';
+import { useTypedSelector } from '../../redux/Store';
 
 
 type CustomHeaderProps = {
@@ -32,6 +33,7 @@ const CustomHeader :React.FC<CustomHeaderProps> = ({
   marginTop,
   marginBottom,
 }) => {
+  const THEME = useTypedSelector((state) => state.app.theme);
   return (
     <View style={{...styles.container,
       marginTop:marginTop?marginTop:0,
@@ -39,20 +41,28 @@ const CustomHeader :React.FC<CustomHeaderProps> = ({
     }}>
       {leftIcon ? (
         <TouchableOpacity style={styles.leftImgView} onPress={onPressLeftIcon}>
-          <Image style={styles.image} source={leftIcon} resizeMode="contain" />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={leftIcon} resizeMode="contain" />
         </TouchableOpacity>
       ) : (null)}
       {title ? (
-      <Text style={styles.title}>{title}</Text>
+      <Text style={{...styles.title,
+        color: THEME === "Dark" ? colors.lightThemeTextH1 : colors.darkThemeTextH1,
+      }}>{title}</Text>
       ): (null)}
       {secondRightIcon ? (
         <TouchableOpacity style={styles.secondRightImgView} onPress={onPressSecondRightIcon}>
-          <Image style={styles.image} source={secondRightIcon} resizeMode="contain" />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={secondRightIcon} resizeMode="contain" />
         </TouchableOpacity>
       ) : (null)}
       {rightIcon ? (
         <TouchableOpacity style={styles.rightImgView} onPress={onPressRightIcon}>
-          <Image style={styles.image} source={rightIcon} resizeMode='contain' />
+          <Image style={{...styles.image,
+          tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
+           }} source={rightIcon} resizeMode='contain' />
         </TouchableOpacity>
       ) : (null)}
     </View>
@@ -90,7 +100,7 @@ const styles = StyleSheet.create({
 
     },
     title:{
-    color:colors.black,
+    // color:colors.black,
     marginRight: wp(2),
     fontWeight:"600",
     fontSize:fontsizes.px_18,

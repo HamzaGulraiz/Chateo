@@ -15,7 +15,7 @@ export type RootStackParams ={
   GetStarted: any;
   MyTabs: any;
   Appereance: any;
-};
+}; 
 
 const Stack = createStackNavigator<RootStackParams>();
 const StackNavigator = () => {
