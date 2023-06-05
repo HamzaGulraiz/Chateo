@@ -125,7 +125,7 @@ const More = () => {
           <View style={styles.userImg}>
           <Image style={{...styles.image,
           tintColor: THEME === "Dark" ? colors.lightTheme : colors.darkTheme,
-           }} source={icons.defaultAccountImage}  resizeMode="contain" />
+           }} source={icons.defaultAccountImageLight}  resizeMode="contain" />
           </View>
           <View style={styles.userNameView}>
             <Text style={{...styles.userName,

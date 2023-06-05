@@ -4,9 +4,9 @@ import {
 } from 'react-native-responsive-screen';
 
 const fontsizes = {
-  // px_20: wp(22), //20px
+  px_24: wp(6.4), //24px
   px_18: wp(4.8), //18px
-  // px_16: wp(7), //16px
+  px_16: wp(4.2), //16px
   px_14: wp(3.7), // 14px
   // px_13: wp(3.3), // 13px
   px_12: wp(3.2), // 12px

@@ -25,16 +25,16 @@ const Chats = () => {
     "status": "Last seen yesterday", 
     "picture": images.test1,
     "story" : "",
-    date: "today",
-    notification:"3",
+    "date": "today",
+    "notification":"3",
   },
     { 
     "id": 1, "name": 
     "Erlan Sadewa","status": 
     "online", "picture": images.test2,
     "story" : "yes",
-    date: "yesterday",
-    notification:"1",
+    "date": "yesterday",
+    "notification":"1",
   },
     {
     "id": 2, "name": 
@@ -42,8 +42,8 @@ const Chats = () => {
     "status": "Last seen 3 hours ago", 
     "picture": images.test3,
     "story" : "",
-    date: "30/05",
-    notification:"",
+    "date": "30/05",
+    "notification":"",
   },
     { 
     "id": 3, 
@@ -51,8 +51,8 @@ const Chats = () => {
     "status": "online", 
     "picture": images.test4,
     "story" : "",
-    date: "17/5",
-    notification:"5",
+    "date": "17/5",
+    "notification":"5",
   },
 
 ];

@@ -4,3 +4,6 @@ export const CONTACTS = 'Contacts';
 export const CHATS = "Chats";
 export const MORE = "More";
 export const APPEREANCE = "Appereance";
+export const PHONE_NUMBER = "PhoneNumber";
+export const VERIFICATION_CODE= "VerificationCode";
+export const PROFILE= "Profile";

@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     
     leftImgView:{
-      marginRight:wp(2),
+      marginRight:wp(4),
       height:hp(2.3),
       width:wp(5)
     },

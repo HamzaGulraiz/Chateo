@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginLeft: wp(4),
   },
   userName: {
-    color:colors.black,
+    // color:colors.black,
     textAlign:"center",
     fontWeight:"600",
     fontSize:fontsizes.px_14,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     marginBottom: hp(1),
   },
   userNumber:{
-    color:colors.black,
+    // color:colors.black,
     textAlign:"center",
     fontWeight:"400",
     fontSize:fontsizes.px_12,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   settingTitle:{
     marginLeft: wp(4),
-    color:colors.black,
+    // color:colors.black,
     textAlign:"center",
     fontWeight:"600",
     fontSize:fontsizes.px_14,
